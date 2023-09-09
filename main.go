@@ -63,6 +63,7 @@ func rootHandlerPost(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, "./template/400.html")
 		return
 	}
+
 	// ??
 	_, error := os.Stat(postRequest.text_sytle + ".txt")
 	if os.IsNotExist(error) || len(postRequest.input_text) > 2000 {
@@ -70,11 +71,13 @@ func rootHandlerPost(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, "template/500.html")
 		return
 	}
+	
 	textInASCII := getAsciiString(postRequest.input_text, postRequest.text_sytle)
 	pageData := PageData{
 		Text:  textInASCII,
 		Color: postRequest.user_color,
 	}
+
 	if postRequest.download_request == "yes" {
 		file, err := os.Create("template/file")
 		if err != nil {
@@ -83,6 +86,7 @@ func rootHandlerPost(w http.ResponseWriter, r *http.Request) {
 		}
 		file.WriteString(textInASCII[0])
 	}
+
 	err := indexTemplate.Execute(w, pageData)
 	if err != nil {
 		fmt.Print(err)
@@ -90,15 +94,18 @@ func rootHandlerPost(w http.ResponseWriter, r *http.Request) {
 }
 
 func getPostPramaters(r *http.Request) *PostRequest {
+
 	input_text := r.FormValue("thetext")
 	text_sytle := r.FormValue("chose")
 	user_color := r.FormValue("color")
 	file_type := r.FormValue("FileType")
 	download_request := r.FormValue("download")
 	vaild_input := CheckLetter(input_text)
-	if !vaild_input {
+
+	if !vaild_input || len(input_text) == 0 {
 		return nil
 	}
+
 	return &PostRequest{
 		input_text:       input_text,
 		text_sytle:       text_sytle,

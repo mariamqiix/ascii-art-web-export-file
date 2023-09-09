@@ -28,7 +28,7 @@
             <option value=".org">Emacs Org Text Document</option>
         </select>
         <br><br>
-        <button type="submit" name="download" value="yes" id="download_button" onclick="download_button()">Download File</button>
+        <button id="download_button" type="submit" name="download" value="yes" onclick="request_download()">Download File</button>
         <input id="bottons" type="submit" value="Submit">
     </form>
     </div>
@@ -40,10 +40,16 @@
 </div>
 <div id="footer"><spain id="colorLetter">Created By:</spain>&nbsp;<spain id="colorLetter">R</spain>uqaya <spain id="colorLetter">H</spain>elal,   &nbsp;&nbsp;the Genius <spain id="colorLetter">M</spain>aryam <spain id="colorLetter">A</spain>bbas</div>
 <a href='/get-file' style='display: none' id="hidden-button" download="your-file"/>
+
 <script> 
-download_button = (function() {
+request_download = (function() {
     // TODO: check for user input
-    let input_text = document.getElementById('text').value 
+    let input_text = document.getElementById('text').value
+
+    if (input_text.length == 0) {
+        return
+    }
+
     let text_sytle = document.getElementById('chose').value 
     let fg_color = document.getElementById('fg_color').value  
     let file_type = document.getElementById('FileType').value 
@@ -65,6 +71,7 @@ download_button = (function() {
     http.send(params);
 })
 </script>
+
 </body>
 </html>
 
