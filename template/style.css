@@ -1,17 +1,17 @@
 body{margin:0;padding:0;border:none; background-color: #f1f0e8; font-family:"Courier New", Courier, monospace;
-     text-align:center; overflow: scroll;}
+     text-align:center; overflow: scroll; height: 100%;width: 100%;}
 #colorLetter{color: #F1AFB2;}
 
-#header{height:15%;width:100% ;border-bottom:10px solid #F1AFB2;font-size:1.5em; padding-bottom:2%; 
-   padding-top:0.1%; font-family: "Brush Script MT","cursive";}
+#header{height:10%;width:98% ;border-bottom:10px solid #F1AFB2;font-size:1.5em; 
+ font-family: "Brush Script MT","cursive";padding:1%;}
 
 #continer{width: 100%;height: 73%}
 
-#formOption{float:left;  height: 80%; padding:4%; width: 42%;color:black;}
+#formOption{float:left;  height: 75%; padding:4%; width: 42%;color:black; max-height:75%}
 #formOption p{color:red;opacity: 0.4;text-align: left;padding-left: 15%; font-style: italic;}
 #formOption label{font-weight: bold;text-align: left;}
 #text{border-style:none;border-radius:20px;background-color:#F1AFB2;text-align:center; 
-    max-height: 50%; max-width: 90%; width: 80%;height: 40%;font-size:1.2em;}
+    height: 40%; max-height: 40%; max-width: 90%; width: 80%;font-size:1.2em;}
 #chose{border-style:none;border-radius:100px;text-align:center;
     background-color:#F1AFB2;height:10%;width:25%;font-size:1.2em;padding: 1%;}
 #FileType{border-style:none;border-radius:100px;text-align:center;
@@ -30,5 +30,5 @@ body{margin:0;padding:0;border:none; background-color: #f1f0e8; font-family:"Cou
 #output:hover{color:red} 
 
 #footer{border-top:10px solid #F1AFB2; font-size:20; float:left;
-    height:6% ;width:96% ; padding: 2%;}
+    height:8% ;width:100% ; padding-top: 1%;}
 
