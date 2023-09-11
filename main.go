@@ -64,7 +64,6 @@ func rootHandlerPost(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// ??
 	_, error := os.Stat(postRequest.text_sytle + ".txt")
 	if os.IsNotExist(error) || len(postRequest.input_text) > 2000 {
 		w.WriteHeader(http.StatusInternalServerError)
@@ -80,6 +79,7 @@ func rootHandlerPost(w http.ResponseWriter, r *http.Request) {
 
 	if postRequest.download_request == "yes" {
 		file, err := os.Create("template/file")
+		os.Chmod("template/file", 0600)
 		if err != nil {
 			fmt.Println("Error \n", err)
 			return
