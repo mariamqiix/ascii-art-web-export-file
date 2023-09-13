@@ -16,8 +16,12 @@ body{margin:0;padding:0;border:none; background-color: #f1f0e8; font-family:"Cou
     background-color:#F1AFB2;height:10%;width:25%;font-size:1.2em;padding: 1%;}
 #FileType{border-style:none;border-radius:100px;text-align:center;
     background-color:#F1AFB2;height:10%;width:25%;font-size:1.2em;padding: 1%;}
+
 #bottons{border-style:none;border-radius:100px;
     background-color:#F1AFB2;height:10%;width:20%;font-size:1.2em;padding: 1%;}
+.Button{border-style:none;border-radius:100px;
+    background-color:#F1AFB2;height:10%;width:20%;font-size:1.2em;padding: 1%;}
+    
 #download_button{border-style:none;border-radius:100px;
     background-color:#F1AFB2;height:10%;width:32%;font-size:1.2em;padding: 1%;}
 #colordiv{border-style:none;border-radius:20px;background-color:#F1AFB2;text-align:left; 

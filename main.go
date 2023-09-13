@@ -29,6 +29,8 @@ func main() {
 }
 
 func getFileHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Add("Content-Type", "application/octet-stream")
+	w.Header().Add("Content-Disposition", "attachment")
 	http.ServeFile(w, r, "template/file")
 }
 
@@ -55,6 +57,11 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 
 func rootHandlerPost(w http.ResponseWriter, r *http.Request) {
 	indexTemplate, _ := template.ParseFiles("template/index.html")
+
+	if r.Header.Get("Content-type") != "application/x-www-form-urlencoded" || r.ContentLength > 2200 {
+		return
+	}
+
 	// POST only from this point
 	postRequest := getPostPramaters(r)
 	is_request_vaild := postRequest != nil
@@ -70,7 +77,7 @@ func rootHandlerPost(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, "template/500.html")
 		return
 	}
-	
+
 	textInASCII := getAsciiString(postRequest.input_text, postRequest.text_sytle)
 	pageData := PageData{
 		Text:  textInASCII,
