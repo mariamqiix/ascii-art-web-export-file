@@ -1,13 +1,15 @@
 Ascii-Art-Web
 
-* Description: Asci-Art-Web-dockerize is a program that will builds images automatically by reading the instructions from a Dockerfile -- a text file that contains all commands, in order, needed to build a given image. 
+Description: Asci-Art-Web is a program that will take your text and converted to graphical graphic representation using ASCII. Only ASCII characters are acceptable.
 
-* Usage: how to run:
-1. To create the image write "docker image build -f Dockerfile -t ascii-docker ." in the Terminal
-2. To create the container write "docker container run -p 8080:8080 -d --name webserver ascii-docker" in the Terminal
+Usage: how to run: You can run the program by writing "go run ." in the terminal. Second, open any browser and write "localhost:8080" in the URL bar. Then you will be able to see the web page.
 
-** OR you can run the "bulid.sh" script to build the image and container.
+On the left side of the page you can see textarea (the first box) here you can write your text. You can choose the type of font that you want your text to display with (there are 3 types of fonts standard, shadow, and thinkertoy).
 
-* Implementation details: algorithm: we create in this project Dockerfile, one image, and one container.
+Also, you can change the color from black to any color you want. 
 
-* Authors: Ruqaya Helal & Maryam Abbas
+You can either press the "submit" button if you finish writing your text and choosing the font type and color and the results will be printed on the right side of the web. Or, press "dowload" button to dowload the ASCII-text in a file.
+
+Implementation details: algorithm: HTTP Get and Post methods
+
+Authors: Ruqaya Helal & Maryam Abbas
