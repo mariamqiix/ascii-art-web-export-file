@@ -91,7 +91,8 @@ func rootHandlerPost(w http.ResponseWriter, r *http.Request) {
 			fmt.Println("Error \n", err)
 			return
 		}
-		file.WriteString(textInASCII[0])
+		for q := 0; q < len(textInASCII) ; q++ {}
+		file.WriteString(textInASCII[q])}
 	}
 
 	err := indexTemplate.Execute(w, pageData)
