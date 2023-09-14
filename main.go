@@ -172,7 +172,7 @@ func CheckLetter(s string) bool {
 	WordsInArr := strings.Split(s, "\r\n")
 	for l := 0; l < len(WordsInArr); l++ {
 		for g := 0; g < len(WordsInArr[l]); g++ {
-			if ( WordsInArr[l][g] > 126 || WordsInArr[l][g] < 32 ) && Words != 10{
+			if ( WordsInArr[l][g] > 126 || WordsInArr[l][g] < 32 ) && WordsInArr[l][g] != 10{
 				return false
 			}
 		}
