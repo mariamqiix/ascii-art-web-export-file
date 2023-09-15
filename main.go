@@ -85,13 +85,7 @@ func rootHandlerPost(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if postRequest.download_request == "yes" {
-		file, err := os.Create("template/file")
-		os.Chmod("template/file", 0600)
-		if err != nil {
-			fmt.Println("Error \n", err)
-			return
-		}
-		file.WriteString(textInASCII[0])
+		WriteFile(postRequest.input_text, postRequest.text_sytle)
 	}
 
 	err := indexTemplate.Execute(w, pageData)
@@ -172,10 +166,42 @@ func CheckLetter(s string) bool {
 	WordsInArr := strings.Split(s, "\r\n")
 	for l := 0; l < len(WordsInArr); l++ {
 		for g := 0; g < len(WordsInArr[l]); g++ {
-			if ( WordsInArr[l][g] > 126 || WordsInArr[l][g] < 32 ) && WordsInArr[l][g] != 10{
+			if (WordsInArr[l][g] > 126 || WordsInArr[l][g] < 32) && WordsInArr[l][g] != 10 {
 				return false
 			}
 		}
 	}
 	return true
+}
+
+func WriteFile(s, text_sytle string) {
+	file, err := os.Create("template/file")
+	if err != nil {
+		fmt.Println("Error \n", err)
+	} else {
+		os.Chmod("template/file", 0600)
+		WordsInArr := strings.Split(s, string(10))
+		for l := 0; l < len(WordsInArr); l++ {
+			var Words [][]string
+			Text1 := strings.ReplaceAll(WordsInArr[l], "\\t", "   ")
+			for j := 0; j < len(Text1); j++ {
+				Words = append(Words, ReadLetter(Text1[j], text_sytle))
+				if Text1[j] == 10 {
+					Words = append(Words, []string{"\n"})
+				}
+			}
+			if len(Words) != 0 {
+				for w := 0; w < 8; w++ {
+					for n := 0; n < len(Words); n++ {
+						file.WriteString(Words[n][w])
+					}
+					if w+1 != 8 {
+						file.WriteString("\n")
+					}
+				}
+			}
+			file.WriteString("\n")
+		}
+	}
+	file.Close()
 }
